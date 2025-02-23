@@ -1,6 +1,8 @@
 let display = document.getElementById("display");
 let message = document.getElementById("message");
+let emojiContainer = document.getElementById("emoji-container");
 let funnyMessages = ["Please use your brain", "Go back to primary school", "Really?", "That's embarrassing!", "Try harder!"];
+let emojis = ["😂", "👎"];
 
 document.addEventListener("keydown", function(event) {
     if (event.key.match(/[0-9+\-*/.=]/)) {
@@ -33,6 +35,7 @@ function calculate() {
         if (result < 100) {
             message.innerText = funnyMessages[Math.floor(Math.random() * funnyMessages.length)];
             display.value = "";
+            rainEmojis();
         } else {
             display.value = result;
             message.innerText = "";
@@ -40,5 +43,19 @@ function calculate() {
     } catch {
         message.innerText = "Invalid input!";
         display.value = "";
+    }
+}
+
+function rainEmojis() {
+    for (let i = 0; i < 20; i++) {
+        let emoji = document.createElement("div");
+        emoji.classList.add("emoji");
+        emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+        emoji.style.left = Math.random() * 100 + "vw";
+        document.body.appendChild(emoji);
+
+        setTimeout(() => {
+            emoji.remove();
+        }, 2000);
     }
 }
