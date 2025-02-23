@@ -5,6 +5,7 @@ body {
     height: 100vh;
     background-color: #f4f4f4;
     font-family: Arial, sans-serif;
+    overflow: hidden;
 }
 
 .calculator {
@@ -13,6 +14,8 @@ body {
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
+    position: relative;
+    z-index: 10;
 }
 
 #display {
@@ -56,4 +59,16 @@ body {
     margin-top: 10px;
     font-weight: bold;
     color: red;
+}
+
+/* Falling emojis */
+.emoji {
+    position: absolute;
+    font-size: 2rem;
+    animation: fall linear 2s forwards;
+}
+
+@keyframes fall {
+    0% { transform: translateY(-50px) scale(1); opacity: 1; }
+    100% { transform: translateY(100vh) scale(1.5); opacity: 0; }
 }
