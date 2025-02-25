@@ -11,6 +11,9 @@ let funnyMessages = [
     "I refuse to show the answer. You figure it out! 😜",
     "Imagine needing a calculator for this... 🤦‍♂️",
     "Give your brain some exercise, don't be lazy! 🏋️"
+    "Aura -10000"
+    "For Real?"
+    "Go Apologise To Trees For Wasting Resources"
 ];
 
 document.addEventListener("keydown", function(event) {
