@@ -11,34 +11,31 @@
     <div class="calculator">
         <input type="text" id="display" disabled>
         <div class="buttons">
+            <button class="btn special" onclick="clearDisplay()">AC</button>
+            <button class="btn" onclick="appendValue('(')">(</button>
+            <button class="btn" onclick="appendValue(')')">)</button>
             <button class="btn" onclick="appendValue('%')">%</button>
-            <button class="btn" onclick="clearEntry()">CE</button>
-            <button class="btn" onclick="clearDisplay()">C</button>
-            <button class="btn" onclick="deleteLast()">⌫</button>
-            
-            <button class="btn" onclick="appendValue('1/')">⅟x</button>
-            <button class="btn" onclick="appendValue('^2')">x²</button>
-            <button class="btn" onclick="appendValue('^(1/3)')">∛x</button>
-            <button class="btn" onclick="appendValue('/')">÷</button>
             
             <button class="btn" onclick="appendValue('7')">7</button>
             <button class="btn" onclick="appendValue('8')">8</button>
             <button class="btn" onclick="appendValue('9')">9</button>
-            <button class="btn" onclick="appendValue('*')">×</button>
+            <button class="btn operator" onclick="appendValue('/')">&divide;</button>
             
             <button class="btn" onclick="appendValue('4')">4</button>
             <button class="btn" onclick="appendValue('5')">5</button>
             <button class="btn" onclick="appendValue('6')">6</button>
-            <button class="btn" onclick="appendValue('-')">-</button>
+            <button class="btn operator" onclick="appendValue('*')">&times;</button>
             
             <button class="btn" onclick="appendValue('1')">1</button>
             <button class="btn" onclick="appendValue('2')">2</button>
             <button class="btn" onclick="appendValue('3')">3</button>
-            <button class="btn" onclick="appendValue('+')">+</button>
+            <button class="btn operator" onclick="appendValue('-')">&minus;</button>
             
-            <button class="btn" onclick="toggleSign()">+/-</button>
             <button class="btn" onclick="appendValue('0')">0</button>
             <button class="btn" onclick="appendValue('.')">.</button>
+            <button class="btn" onclick="deleteLast()">⌫</button>
+            <button class="btn operator" onclick="appendValue('+')">&plus;</button>
+            
             <button class="btn equal" onclick="calculate()">=</button>
         </div>
         <p id="message"></p>

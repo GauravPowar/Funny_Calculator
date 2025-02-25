@@ -1,3 +1,4 @@
+/* script.js */
 let display = document.getElementById("display");
 let message = document.getElementById("message");
 let funnyMessages = [
@@ -14,7 +15,7 @@ let funnyMessages = [
 ];
 
 document.addEventListener("keydown", function(event) {
-    if (event.key.match(/[0-9+\-*/.=]/)) {
+    if (event.key.match(/[0-9+\-*/.=()]/)) {
         appendValue(event.key);
     } else if (event.key === "Enter") {
         calculate();
@@ -38,19 +39,11 @@ function deleteLast() {
     display.value = display.value.slice(0, -1);
 }
 
-function toggleSign() {
-    if (display.value) {
-        display.value = display.value.startsWith('-') ? display.value.slice(1) : '-' + display.value;
-    }
-}
-
 function calculate() {
     try {
         let result = eval(display.value);
-        if (result < 0 || (result.toString().includes('.') && (parseFloat(result.toFixed(2)) > 1))) {
-            display.value = result;
-            message.innerText = "";
-        } else if (result < 100) {
+        let decimalSum = display.value.includes('.') ? display.value.split('+').map(Number).reduce((a, b) => a + b, 0) : 0;
+        if (result < 100 && result >= 0 && decimalSum <= 1) {
             message.innerText = funnyMessages[Math.floor(Math.random() * funnyMessages.length)];
             display.value = "";
         } else {
