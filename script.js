@@ -1,3 +1,4 @@
+/* script.js */
 let display = document.getElementById("display");
 let message = document.getElementById("message");
 let funnyMessages = [
