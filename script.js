@@ -1,3 +1,4 @@
+/* script.js */
 let display = document.getElementById("display");
 let message = document.getElementById("message");
 let funnyMessages = [
@@ -11,8 +12,7 @@ let funnyMessages = [
     "I refuse to show the answer. You figure it out! 😜",
     "Imagine needing a calculator for this... 🤦‍♂️",
     "Give your brain some exercise, don't be lazy! 🏋️"
-    "Aura -10000"
-    "For Real?"
+    "Aura -10000" "For Real?"
     "Go Apologise To Trees For Wasting Resources"
 ];
 
