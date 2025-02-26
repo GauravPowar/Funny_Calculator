@@ -1,3 +1,4 @@
+/* style.css */
 body {
     display: flex;
     justify-content: center;
@@ -70,5 +71,5 @@ body {
 #message {
     margin-top: 10px;
     font-weight: bold;
-    color: black;
+    color: red;
 }
