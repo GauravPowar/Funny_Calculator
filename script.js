@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let display = document.getElementById("display");
     let message = document.getElementById("message");
     let buttons = document.querySelectorAll(".btn");
+    let footerExists = document.querySelector(".footer");
     let funnyMessages = [
         "Seriously? Even my pet goldfish can solve this! 🐠",
         "Come on, you can do better! Use that big brain of yours! 🧠",
@@ -62,17 +63,24 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Dark mode toggle
-    let darkMode = false;
+    let darkMode = localStorage.getItem("darkMode") === "true";
+    if (darkMode) {
+        document.body.classList.add("dark-mode");
+    }
+
     function toggleDarkMode() {
         darkMode = !darkMode;
         document.body.classList.toggle("dark-mode");
+        localStorage.setItem("darkMode", darkMode);
     }
 
-    // Add credit and GitHub link
-    document.body.insertAdjacentHTML("beforeend", `
-        <div class="footer">
-            <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
-            <a href="https://github.com/GauravPowar/Funny_Calculator" target="_blank">View Project</a>
-        </div>
-    `);
+    // Add credit and GitHub link only if not already added
+    if (!footerExists) {
+        document.body.insertAdjacentHTML("beforeend", `
+            <div class="footer">
+                <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+                <a href="https://github.com/GauravPowar/Funny_Calculator" target="_blank">View Project</a>
+            </div>
+        `);
+    }
 });
