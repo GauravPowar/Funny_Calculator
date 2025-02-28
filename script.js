@@ -1,5 +1,3 @@
-import { evaluate } from 'mathjs';
-
 let display = document.getElementById("display");
 let message = document.getElementById("message");
 let funnyMessages = [
@@ -42,7 +40,7 @@ function deleteLast() {
 
 function calculate() {
     try {
-        let result = evaluate(display.value);
+        let result = math.evaluate(display.value);
         result = parseFloat(result.toFixed(10).replace(/\.0+$/, ""));
         
         if (result < 100 && Math.random() < 0.5) {  // 50% chance of showing a funny message
@@ -66,9 +64,11 @@ function toggleDarkMode() {
 }
 
 // Add credit and GitHub link
-document.body.insertAdjacentHTML("beforeend", `
-    <div class="footer">
-        <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
-        <a href="https://github.com/GauravPowar/Funny_Calculator" target="_blank">View Project</a>
-    </div>
-`);
+document.addEventListener("DOMContentLoaded", function () {
+    document.body.insertAdjacentHTML("beforeend", `
+        <div class="footer">
+            <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+            <a href="https://github.com/GauravPowar/Funny_Calculator" target="_blank">View Project</a>
+        </div>
+    `);
+});
