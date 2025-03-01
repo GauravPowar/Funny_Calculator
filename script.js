@@ -1,4 +1,3 @@
-/* JavaScript */
 document.addEventListener("DOMContentLoaded", function () {
     let display = document.getElementById("display");
     let message = document.getElementById("message");
@@ -18,7 +17,8 @@ document.addEventListener("DOMContentLoaded", function () {
     ];
 
     buttons.forEach(button => {
-        button.addEventListener("click", function () {
+        button.addEventListener("click", function (event) {
+            event.stopImmediatePropagation(); // Prevents multiple event bindings
             let value = this.innerText;
             appendValue(value);
         });
@@ -40,15 +40,15 @@ document.addEventListener("DOMContentLoaded", function () {
     function calculate() {
         try {
             let expression = display.value.replace(/×/g, '*').replace(/÷/g, '/');
-            let result = math.evaluate(expression);
+            let result = eval(expression); // Consider using math.js if more safety is needed
             result = parseFloat(result.toFixed(10).replace(/\.0+$/, ""));
-            
+
             if (result > 0 && result < 100) {
                 message.innerText = funnyMessages[Math.floor(Math.random() * funnyMessages.length)];
             } else {
                 message.innerText = "";
             }
-            
+
             display.value = result;
         } catch (error) {
             message.innerText = "Invalid expression!";
