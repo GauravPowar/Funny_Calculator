@@ -1,3 +1,4 @@
+/* JavaScript */
 document.addEventListener("DOMContentLoaded", function () {
     let display = document.getElementById("display");
     let message = document.getElementById("message");
