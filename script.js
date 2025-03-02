@@ -4,24 +4,18 @@ document.addEventListener("DOMContentLoaded", function () {
     let buttons = document.querySelectorAll(".btn");
 
     let funnyMessages = [
-        "Seriously? Even my pet goldfish can solve this! 🐠",
-        "Come on, you can do better! Use that big brain of yours! 🧠",
-        "Did you really need a calculator for this? 😆",
-        "Math teachers everywhere are crying. 😭",
-        "Try harder! Even a potato can count this! 🥔",
-        "Use your fingers if necessary! 🖐️",
-        "This is a test... and you failed! 😂",
-        "I refuse to show the answer. You figure it out! 😜",
-        "Imagine needing a calculator for this... 🤦‍♂️",
-        "Give your brain some exercise, don’t be lazy! 🏋️"
+        "Please use your brain! 🧠",
+        "Go back to primary school! 📚",
+        "Really? That's embarrassing! 😆",
+        "Try harder! Even a potato can do this! 🥔",
+        "I refuse to show the answer. You figure it out! 😜"
     ];
 
     buttons.forEach(button => {
-        button.addEventListener("click", function (event) {
-            event.stopImmediatePropagation(); // Prevents multiple event bindings
+        button.onclick = function () { // Prevent multiple bindings
             let value = this.innerText;
             appendValue(value);
-        });
+        };
     });
 
     function appendValue(value) {
@@ -40,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function calculate() {
         try {
             let expression = display.value.replace(/×/g, '*').replace(/÷/g, '/');
-            let result = eval(expression); // Consider using math.js if more safety is needed
+            let result = eval(expression); // Consider using math.js for safety
             result = parseFloat(result.toFixed(10).replace(/\.0+$/, ""));
 
             if (result > 0 && result < 100) {
@@ -52,6 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         } catch (error) {
             message.innerText = "Invalid expression!";
+            display.value = "";
         }
     }
 
