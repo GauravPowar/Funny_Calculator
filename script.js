@@ -45,11 +45,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (result > 0 && result < 100) {
                 message.innerText = funnyMessages[Math.floor(Math.random() * funnyMessages.length)];
+                display.value = ""; // Hide the actual answer
             } else {
                 message.innerText = "";
+                display.value = result;
             }
-
-            display.value = result;
         } catch (error) {
             message.innerText = "Invalid expression!";
         }
