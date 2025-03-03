@@ -1,57 +1,41 @@
-document.addEventListener("DOMContentLoaded", function () {
-    let display = document.getElementById("display");
-    let message = document.getElementById("message");
-    let buttons = document.querySelectorAll(".btn");
+let display = document.getElementById("display");
+let messageBox = document.createElement("div"); // For funny messages
+messageBox.id = "message";
+document.querySelector(".calculator").appendChild(messageBox);
 
-    let funnyMessages = [
-        "Please use your brain! 🧠",
-        "Go back to primary school! 📚",
-        "Really? That's embarrassing! 😆",
-        "Try harder! Even a potato can do this! 🥔",
-        "I refuse to show the answer. You figure it out! 😜"
-    ];
+const funnyMessages = [
+    "That's cute! 😆",
+    "Try aiming higher! 🚀",
+    "Even my pet goldfish can count higher! 🐠",
+    "Is that your final answer? 😜",
+    "Math is hard, isn't it? 🤓",
+    "You call that a number? 😂",
+    "Even a snail moves faster than this calculation! 🐌",
+    "Oof, too low! Try again! 😬"
+];
 
-    buttons.forEach(button => {
-        button.onclick = function () { // Prevent multiple bindings
-            let value = this.innerText;
-            appendValue(value);
-        };
-    });
+function appendValue(value) {
+    display.value += value;
+    messageBox.innerText = ""; // Clear previous messages
+}
 
-    function appendValue(value) {
-        display.value += value;
-    }
+function clearDisplay() {
+    display.value = "";
+    messageBox.innerText = "";
+}
 
-    function clearDisplay() {
-        display.value = "";
-        message.innerText = "";
-    }
-
-    function deleteLast() {
-        display.value = display.value.slice(0, -1);
-    }
-
-    function calculate() {
-        try {
-            let expression = display.value.replace(/×/g, '*').replace(/÷/g, '/');
-            let result = eval(expression); // Consider using math.js for safety
-            result = parseFloat(result.toFixed(10).replace(/\.0+$/, ""));
-
-            if (result > 0 && result < 100) {
-                message.innerText = funnyMessages[Math.floor(Math.random() * funnyMessages.length)];
-                display.value = ""; // Hide the actual answer
-            } else {
-                message.innerText = "";
-                display.value = result;
-            }
-        } catch (error) {
-            message.innerText = "Invalid expression!";
-            display.value = "";
+function calculate() {
+    try {
+        let result = new Function("return " + display.value.replace("%", "/100"))();
+        if (result < 100) {
+            messageBox.innerText = funnyMessages[Math.floor(Math.random() * funnyMessages.length)];
+            display.value = ""; // Clear display for fun effect
+        } else {
+            display.value = result;
+            messageBox.innerText = ""; // Clear any old message
         }
+    } catch {
+        display.value = "Error";
+        messageBox.innerText = "Nice try, but nope! 😜";
     }
-
-    window.clearDisplay = clearDisplay;
-    window.deleteLast = deleteLast;
-    window.calculate = calculate;
-    window.appendValue = appendValue;
-});
+}
