@@ -35,25 +35,23 @@ def calculate():
 # GUI Setup
 root = tk.Tk()
 root.title("Funny Calculator")
-root.geometry("400x500")
-root.configure(bg="#2c3e50")
 
 entry_var = tk.StringVar()
-entry = tk.Entry(root, textvariable=entry_var, font=("Arial", 24), bd=10, relief=tk.GROOVE, justify='right', bg="#ecf0f1")
-entry.grid(row=0, column=0, columnspan=4, ipadx=8, ipady=8, pady=10)
+entry = tk.Entry(root, textvariable=entry_var, font=("Arial", 20), bd=10, relief=tk.RIDGE, justify='right')
+entry.grid(row=0, column=0, columnspan=4)
 
-message_label = tk.Label(root, text="", font=("Arial", 12), fg="yellow", bg="#2c3e50")
+message_label = tk.Label(root, text="", font=("Arial", 12), fg="red")
 message_label.grid(row=1, column=0, columnspan=4)
 
 buttons = [
-    ("AC", 2, 0, clear_display, "#e74c3c"), ("(", 2, 1, lambda: append_value("("), "#3498db"), (")", 2, 2, lambda: append_value(")"), "#3498db"), ("%", 2, 3, lambda: append_value("%"), "#f39c12"),
-    ("7", 3, 0, lambda: append_value("7"), "#95a5a6"), ("8", 3, 1, lambda: append_value("8"), "#95a5a6"), ("9", 3, 2, lambda: append_value("9"), "#95a5a6"), ("/", 3, 3, lambda: append_value("/"), "#f39c12"),
-    ("4", 4, 0, lambda: append_value("4"), "#95a5a6"), ("5", 4, 1, lambda: append_value("5"), "#95a5a6"), ("6", 4, 2, lambda: append_value("6"), "#95a5a6"), ("*", 4, 3, lambda: append_value("*"), "#f39c12"),
-    ("1", 5, 0, lambda: append_value("1"), "#95a5a6"), ("2", 5, 1, lambda: append_value("2"), "#95a5a6"), ("3", 5, 2, lambda: append_value("3"), "#95a5a6"), ("-", 5, 3, lambda: append_value("-"), "#f39c12"),
-    ("0", 6, 0, lambda: append_value("0"), "#95a5a6"), (".", 6, 1, lambda: append_value("."), "#95a5a6"), ("=", 6, 2, calculate, "#2ecc71"), ("+", 6, 3, lambda: append_value("+"), "#f39c12")
+    ("AC", 2, 0, clear_display), ("(", 2, 1, lambda: append_value("(")), (")", 2, 2, lambda: append_value(")")), ("%", 2, 3, lambda: append_value("%")),
+    ("7", 3, 0, lambda: append_value("7")), ("8", 3, 1, lambda: append_value("8")), ("9", 3, 2, lambda: append_value("9")), ("/", 3, 3, lambda: append_value("/")),
+    ("4", 4, 0, lambda: append_value("4")), ("5", 4, 1, lambda: append_value("5")), ("6", 4, 2, lambda: append_value("6")), ("*", 4, 3, lambda: append_value("*")),
+    ("1", 5, 0, lambda: append_value("1")), ("2", 5, 1, lambda: append_value("2")), ("3", 5, 2, lambda: append_value("3")), ("-", 5, 3, lambda: append_value("-")),
+    ("0", 6, 0, lambda: append_value("0")), (".", 6, 1, lambda: append_value(".")), ("=", 6, 2, calculate), ("+", 6, 3, lambda: append_value("+"))
 ]
 
-for (text, row, col, cmd, color) in buttons:
-    tk.Button(root, text=text, font=("Arial", 16), command=cmd, width=5, height=2, bg=color, fg="white", bd=3, relief=tk.RAISED).grid(row=row, column=col, padx=5, pady=5)
+for (text, row, col, cmd) in buttons:
+    tk.Button(root, text=text, font=("Arial", 16), command=cmd, width=5, height=2).grid(row=row, column=col)
 
 root.mainloop()
