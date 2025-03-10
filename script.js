@@ -12,6 +12,7 @@ const funnyMessages = [
     "You call that a number? 😂",
     "Even a snail moves faster than this calculation! 🐌",
     "Oof, too low! Try again! 😬"
+    "I feel sorry for you! 🙄"
 ];
 
 function appendValue(value) {
