@@ -10,7 +10,6 @@ const funnyMessages = [
     "Is that your final answer? 😜",
     "Math is hard, isn't it? 🤓",
     "You call that a number? 😂",
-    "Even a snail moves faster than this calculation! 🐌",
     "Oof, too low! Try again! 😬"
     "I feel sorry for you! 🙄"
 ];
