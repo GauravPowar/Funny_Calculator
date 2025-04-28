@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "Is that your final answer? 😜",
         "Math is hard, isn't it? 🤓",
         "You call that a number? 😂",
+        "You call that a problem? 😂",
         "Oof, too low! Try again! 😬",
         "I feel sorry for you! 🙄"
     ];
